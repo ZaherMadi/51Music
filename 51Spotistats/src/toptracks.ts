@@ -30,7 +30,7 @@ async function fetchTrack(token: string): Promise<any> {
         method: "GET", headers: { Authorization: `Bearer ${token}` }
     });
     if (!result.ok) {
-        console.error("Erreur lors de la récupération des pistes:", response.statusText);
+        console.error("Erreur lors de la récupération des pistes:", result.statusText);
         return;
     }
     console.log(result);

@@ -3,11 +3,20 @@ const datarecue = localStorage.getItem('data');
 if (!token) {
     redirectToAuthCodeFlow();
 } else {
+    if (datarecue) {
+        const parsedData = JSON.parse(datarecue);
+        displayTopTracks(parsedData.items);
+        console.log(parsedData.items);
+    }
+    
+    else {
     fetchTrack(token).then((data) => {
         console.log(data);
         localStorage.setItem('data', JSON.stringify(data));
         displayTopTracks(data.items);
     });
+}
+
 }
 
 interface Artist {

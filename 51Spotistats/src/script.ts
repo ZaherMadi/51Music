@@ -2,8 +2,8 @@ async function initApp() {
 const clientId = "1086596f94274f559255b1f60160c6c0";
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
-
-if (window.location.pathname === '/callback') {
+console.log(params, code);
+if (window.location.pathname === '/callback' || window.location.pathname === '/callback.html') {
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
     if (code) {

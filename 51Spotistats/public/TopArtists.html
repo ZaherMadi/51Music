@@ -3,20 +3,20 @@
 <head>
     <meta charset="utf-8">
     <title>SpotiStats</title>
-    <script src="src/toptracks.ts" type="module"></script>
+    <script src="../src/topArtists.ts" type="module"></script>
 
-    <link rel="stylesheet" href="MyStats.css">
+    <link rel="stylesheet" href="../MyStats.css">
 </head>
 <body>
     <h1>Top Tracks</h1>
-    <button id="Artists">Top Artists 💿</button>
+    <button id="Tracks">Top Tracks 💿</button>
 
 
     <section id="profile" style="overflow-y: auto">
-        <h2>Titres les plus streams:  <span id="displayName"></span> </h2>
+        <h2>Artistes les plus streams:  <span id="displayName"></span> </h2>
         <span id="avatar"></span>
         <ul>
-            <div id="tracks" class="tracks"></div>
+            <div id="artists" class="tracks"></div>
             </div>
         </ul>
     </section>
@@ -25,8 +25,8 @@
         document.getElementById('Reco').addEventListener('click', function() {
             window.location.href = 'index.html';
         });
-        document.getElementById('Artists').addEventListener('click', function() {
-            window.location.href = 'TopArtists.html';
+        document.getElementById('Tracks').addEventListener('click', function() {
+            window.location.href = 'TopTracks.html';
         });
     </script>
 </body>

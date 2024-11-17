@@ -7,7 +7,7 @@ export default defineConfig({
     open: true 
   },
   esbuild: {
-    target: 'esnext'  // Permet de supporter le top-level await
+    target: 'esnext'  //Permet de supporter le top-level await
   },
   build: {
     outDir: 'dist'  // Dossier de sortie

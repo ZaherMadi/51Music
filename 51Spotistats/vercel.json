@@ -1,0 +1,22 @@
+{
+    "rewrites": [
+      {
+        "source": "/LoginPage",
+        "destination": "/LoginPage.html"
+      },
+      {
+        "source": "/legal",
+        "destination": "/legal.html"
+      },
+      {
+        "source": "/404",
+        "destination": "/404.html"
+      },
+        {
+            "source": "/",
+            "destination": "/index.html"
+        }
+    ]
+  }
+  
+  

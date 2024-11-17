@@ -3,14 +3,28 @@ const clientId = "1086596f94274f559255b1f60160c6c0";
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 
-if (!code) {
-    redirectToAuthCodeFlow(clientId);
-} else {
-    const accessToken = await getAccessToken(clientId, code);
-    const profile = await fetchProfile(accessToken);
-    console.log(profile);
-    populateUI(profile);
+if (window.location.pathname === '/callback') {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+    if (code) {
+        console.log("Code reçu :", code);
+        // Envoyer ce code à votre serveur backend pour obtenir un token.
+    } else {
+        console.error("Pas de code dans l'URL.");
+    }
+}
+
+if (window.location.pathname === '/LoginPage.html') {
     
+    if (!code) {
+        redirectToAuthCodeFlow(clientId);
+    } else {
+        const accessToken = await getAccessToken(clientId, code);
+        const profile = await fetchProfile(accessToken);
+        console.log(profile);
+        populateUI(profile);
+        
+    }
 }
 }
 initApp();

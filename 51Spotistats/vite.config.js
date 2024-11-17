@@ -10,7 +10,10 @@ export default defineConfig({
     target: 'esnext'  //Permet de supporter le top-level await
   },
   build: {
-    outDir: 'dist'  // Dossier de sortie
+    outDir: 'dist',  // Dossier de sortie
+    rollupOptions: {
+      input: './index.html', // Fichier HTML principal comme point d'entrée
+    },
   }
 })
 

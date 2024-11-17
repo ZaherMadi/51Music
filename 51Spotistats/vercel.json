@@ -1,9 +1,0 @@
-{
-    "redirects": [
-        {
-            "source": "/(.*)",
-            "destination": "/404pages.html",
-            "permanent": false
-        }
-    ]
-}

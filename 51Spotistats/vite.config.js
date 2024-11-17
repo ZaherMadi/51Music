@@ -12,7 +12,12 @@ export default defineConfig({
   build: {
     outDir: 'dist',  // Dossier de sortie
     rollupOptions: {
-      input: './index.html', // Fichier HTML principal comme point d'entrée
+      input: './index.html',
+      output: {
+        entryFileNames: '[name].js',
+        chunkFileNames: 'chunks/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash].[ext]'
+      }
     },
   }
 })

@@ -9,6 +9,10 @@
         "destination": "/legal.html"
       },
       {
+        "source": "callback",
+        "destination": "/LoginPage.html"
+      },
+      {
         "source": "/404",
         "destination": "/404.html"
       },
@@ -16,6 +20,7 @@
             "source": "/",
             "destination": "/index.html"
         }
+        
     ]
   }
   

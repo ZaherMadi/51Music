@@ -209,7 +209,7 @@ button {
     50% { transform: scale(1.05); }
 }
 
-.legal-contain {
+.legal-container {
     display: flex;
     justify-content: center;
     align-items: center;

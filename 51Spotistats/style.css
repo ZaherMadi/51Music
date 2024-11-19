@@ -54,6 +54,15 @@
     animation: slideUp 0.8s ease-out;
   }
   
+  @media (max-width:665px){
+      #profile {
+    
+    max-width: 95vh;
+    
+  }
+    
+  } 
+  
   #profile h2 {
     font-size: 1.8em;
     color: #1db954;

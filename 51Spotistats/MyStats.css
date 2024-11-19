@@ -209,6 +209,10 @@ button {
     50% { transform: scale(1.05); }
 }
 
+.legal {
+    justify-content: center;
+    align-items: center;
+}
 .legal h1, .legal p, .legal a {
     font-family: 'Georgia', serif;
     color: #fff;

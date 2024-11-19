@@ -209,7 +209,7 @@ button {
     50% { transform: scale(1.05); }
 }
 
-.legal {
+.legal-contain {
     justify-content: center;
     align-items: center;
 }

@@ -59,7 +59,7 @@ if (window.location.pathname === '/TopArtists.html') {
         redirectToAuthCodeFlow(clientId);
     }
     else {
-        fetchTrack(token).then((data) => {
+        fetchArtists(token).then((data) => {
             console.log(data);
             localStorage.setItem('data', JSON.stringify(data));
         });
@@ -168,6 +168,18 @@ interface Track {
     };
 }
 
+async function fetchTrack(token: string): Promise<any> {
+    const result = await fetch("https://api.spotify.com/v1/me/top/tracks", {
+        method: "GET", headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!result.ok) {
+        console.error("Erreur lors de la récupération des pistes:", result.statusText);
+        return;
+    }
+    console.log(result);
+    return await result.json();
+}
+
 function displayTopTracks(tracks: Track[]): void {
     const list = document.getElementById('tracks');
     if (!list) {
@@ -210,7 +222,7 @@ interface Artist {
 }
 
 
-async function fetchTrack(token: string): Promise<any> {
+async function fetchArtists(token: string): Promise<any> {
     const result = await fetch("https://api.spotify.com/v1/me/top/artists", { // Utilisation correcte de top tracks
         method: "GET",
         headers: { Authorization: `Bearer ${token}` }

@@ -38,15 +38,21 @@ if (window.location.pathname === '/TopTracks.html') {
         redirectToAuthCodeFlow(clientId);
     }
     else {
-        fetchTrack(token).then((data) => {
-            console.log(data);
-            localStorage.setItem('TopTracks', JSON.stringify(data));
-        });
         if (datarecue) {
             const parsedData = JSON.parse(datarecue);
             displayTopTracks(parsedData.items);
             console.log(parsedData.items);
         }
+        else {
+        fetchTrack(token).then((data) => {
+            console.log(data);
+            localStorage.setItem('TopTracks', JSON.stringify(data));
+            const parsedData = JSON.parse(JSON.stringify(data));
+            displayTopTracks(parsedData.items);
+            console.log(parsedData.items);
+        });
+        }
+
     }
     
 }
@@ -59,21 +65,29 @@ if (window.location.pathname === '/TopArtists.html') {
         redirectToAuthCodeFlow(clientId);
     }
     else {
-        fetchArtists(token).then((data) => {
-            console.log(data);
-            localStorage.setItem('TopArtists', JSON.stringify(data));
-        });
         if (datarecue) {
             const parsedData = JSON.parse(datarecue);
             displayTopArtists(parsedData.items);
             console.log(parsedData.items);
         }
+        else {
+        fetchArtists(token).then((data) => {
+            console.log(data);
+            localStorage.setItem('TopArtists', JSON.stringify(data));
+            const parsedData = JSON.parse(JSON.stringify(data));
+            displayTopArtists(parsedData.items);
+            console.log(parsedData.items);
+        });
+            }
+
     }
+
+}
 
 
 }
     
-    }
+    
 initApp();
 
 
@@ -196,7 +210,7 @@ function displayTopTracks(tracks: Track[]): void {
         item.innerHTML = `
             <div class="rank">#${index + 1}</div>
             <div class="track-info">
-                <img src="${track.album.images[0].url}" alt="${track.name}" class="album-cover">
+            <img src="${track.album.images[0].url}" alt="${track.name}" class="album-cover">
                 <div>
                     <h5 class="track-name">${track.name}</h5>
                     <p class="artist-name">${track.artists.map((artist) => artist.name).join(', ')}</p>

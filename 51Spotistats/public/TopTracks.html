@@ -26,7 +26,17 @@
             </div>
         </ul>
     </section>
-    <button id="Reco">Reconnexion</button>
+    <button id="Reco">Accueil</button>
+    <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+        <button id="legal-mentions" style="background: none; border: none; color: #0073e6; cursor: pointer; text-decoration: underline; font-size: 0.9em;">
+            Mentions Légales
+        </button>
+    </div>
+    <script>
+        document.getElementById('legal-mentions').addEventListener('click', function() {
+            window.location.href = 'legal.html';
+        });
+    </script>
     <script>
         document.getElementById('Reco').addEventListener('click', function() {
             window.location.href = 'index.html';

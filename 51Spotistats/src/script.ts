@@ -33,14 +33,14 @@ if (window.location.pathname === '/LoginPage.html') {
 if (window.location.pathname === '/TopTracks.html') {
     
     const token = localStorage.getItem('token');
-    const datarecue = localStorage.getItem('data');
+    const datarecue = localStorage.getItem('TopTracks');
     if (!token) {
         redirectToAuthCodeFlow(clientId);
     }
     else {
         fetchTrack(token).then((data) => {
             console.log(data);
-            localStorage.setItem('data', JSON.stringify(data));
+            localStorage.setItem('TopTracks', JSON.stringify(data));
         });
         if (datarecue) {
             const parsedData = JSON.parse(datarecue);
@@ -54,14 +54,14 @@ if (window.location.pathname === '/TopTracks.html') {
 if (window.location.pathname === '/TopArtists.html') {
     
     const token = localStorage.getItem('token');
-    const datarecue = localStorage.getItem('data');
+    const datarecue = localStorage.getItem('TopArtists');
     if (!token) {
         redirectToAuthCodeFlow(clientId);
     }
     else {
         fetchArtists(token).then((data) => {
             console.log(data);
-            localStorage.setItem('data', JSON.stringify(data));
+            localStorage.setItem('TopArtists', JSON.stringify(data));
         });
         if (datarecue) {
             const parsedData = JSON.parse(datarecue);

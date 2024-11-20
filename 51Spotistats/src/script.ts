@@ -29,7 +29,51 @@ if (window.location.pathname === '/LoginPage.html') {
         
     }
 }
+
+if (window.location.pathname === '/TopTracks.html') {
+    
+    const token = localStorage.getItem('token');
+    const datarecue = localStorage.getItem('data');
+    if (!token) {
+        redirectToAuthCodeFlow(clientId);
+    }
+    else {
+        fetchTrack(token).then((data) => {
+            console.log(data);
+            localStorage.setItem('data', JSON.stringify(data));
+        });
+        if (datarecue) {
+            const parsedData = JSON.parse(datarecue);
+            displayTopTracks(parsedData.items);
+            console.log(parsedData.items);
+        }
+    }
+    
 }
+
+if (window.location.pathname === '/TopArtists.html') {
+    
+    const token = localStorage.getItem('token');
+    const datarecue = localStorage.getItem('data');
+    if (!token) {
+        redirectToAuthCodeFlow(clientId);
+    }
+    else {
+        fetchTrack(token).then((data) => {
+            console.log(data);
+            localStorage.setItem('data', JSON.stringify(data));
+        });
+        if (datarecue) {
+            const parsedData = JSON.parse(datarecue);
+            displayTopArtists(parsedData.items);
+            console.log(parsedData.items);
+        }
+    }
+
+
+}
+    
+    }
 initApp();
 
 
@@ -111,4 +155,98 @@ function populateUI(profile: any) {
     document.getElementById("url")!.innerText = profile.href;
     document.getElementById("url")!.setAttribute("href", profile.href);
     document.getElementById("imgUrl")!.innerText = profile.images[0]?.url ?? '(no profile image)';
+}
+
+////////// TOPS TRACKS //////////
+
+interface Track {
+    name: string;
+    artists: { name: string }[];
+    album: {
+        images: { url: string }[];
+        name: string;
+    };
+}
+
+function displayTopTracks(tracks: Track[]): void {
+    const list = document.getElementById('tracks');
+    if (!list) {
+        return;
+    }
+
+    list.innerHTML = ""; // Efface les pistes précédentes si la fonction est rappelée
+
+    tracks.forEach((track, index) => {
+        console.log("test ...", track);
+        const item = document.createElement('div');
+        item.classList.add('track');
+
+        item.innerHTML = `
+            <div class="rank">#${index + 1}</div>
+            <div class="track-info">
+                <img src="${track.album.images[0].url}" alt="${track.name}" class="album-cover">
+                <div>
+                    <h5 class="track-name">${track.name}</h5>
+                    <p class="artist-name">${track.artists.map((artist) => artist.name).join(', ')}</p>
+                    <p class="album-name">${track.album.name}</p>
+                </div>
+            </div>
+        `;
+
+        list.appendChild(item);
+    });
+    
+
+}
+
+
+///// TOP ARTISTS //////
+
+interface Artist {
+    name: string;
+    popularity: string;
+    genres: string[];
+    images: { url: string }[];
+}
+
+
+async function fetchTrack(token: string): Promise<any> {
+    const result = await fetch("https://api.spotify.com/v1/me/top/artists", { // Utilisation correcte de top tracks
+        method: "GET",
+        headers: { Authorization: `Bearer ${token}` }
+    });
+    if (!result.ok) {
+        console.error("Erreur lors de la récupération des pistes:", result.statusText);
+        return;
+    }
+    return await result.json();
+}
+
+function displayTopArtists(Artists: Artist[]): void {
+    const list = document.getElementById('artists');
+    if (!list) {
+        return;
+    }
+
+    list.innerHTML = ""; // Efface les pistes précédentes si la fonction est rappelée
+
+    Artists.forEach((Artist, index) => {
+        console.log("test ...", Artist);
+        const item = document.createElement('div');
+        item.classList.add('artists');
+
+        // Utilisation correcte des images et autres éléments
+        item.innerHTML = `
+            <div class="rank">#${index + 1}</div>
+            <div class="artists-info">
+                <img src="${Artist.images[0].url}" alt="${Artist.name}" class="album-cover">
+                <div>
+                    <h5 class="artist-name">${Artist.name}</h5>
+                    <p class="artist-genres">${Artist.genres}</p>
+                </div>
+            </div>
+        `;
+
+        list.appendChild(item);
+    });
 }

@@ -54,7 +54,7 @@
     animation: slideUp 0.8s ease-out;
   }
   
-  @media (max-width:665px){
+  @media (min-width:491px) and (max-width:665px){
       #profile {
     
     max-width: 40vh;
@@ -62,6 +62,18 @@
   }
       h1 {
               font-size: 35px;
+
+      }
+    
+  } 
+  @media (max-width:490px){
+      #profile {
+    
+    max-width: 30vh;
+    
+  }
+      h1 {
+              font-size: 30px;
 
       }
     

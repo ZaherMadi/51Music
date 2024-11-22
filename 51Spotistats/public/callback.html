@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My Account</title>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-title" content="Spotistats" />    <script src="index.js" type="module"></script>
+    <link rel="stylesheet" href="/MyStats.css">
+</head>
+<body>
+    <h1>51 SpotiStats !</h1>
+
+    <section id="profile">
+        <h2>Bienvenue  <span id="displayName"></span> !</h2>
+        <span id="avatar"></span>
+        <ul>
+            <!-- <li>Login: <span id="id"></span></li>
+            <li>Email: <span id="email"></span></li>
+            <li>Spotify URI: <a id="uri" href="#" target="_blank"></a></li> -->
+            <!-- <li>Link: <a id="url" href="#" target="_blank"></a></li> -->
+            <!-- <li>Profile Image URL: <span id="imgUrl"></span></li> -->
+        </ul>
+    </section>
+    <div style="display: flex; gap: 20px; margin-top:2vh;">
+    <button id="TopArtists">Top Artists</button>
+    <button id="Toptrack">Top Tracks</button>
+    </div>
+    <script>
+        document.getElementById('Toptrack').addEventListener('click', function() {
+            window.location.href = 'TopTracks.html';
+        });
+        document.getElementById('TopArtists').addEventListener('click', function() {
+            window.location.href = 'TopArtists.html';
+        });
+    </script>
+</body>
+</html>

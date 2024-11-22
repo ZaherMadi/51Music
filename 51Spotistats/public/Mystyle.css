@@ -172,4 +172,34 @@
       background-color: #f9f9f9;
     }
   }
-  
+  .legal-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.legal h1, .legal p, .legal a {
+    font-family: 'Georgia', serif;
+    color: #fff;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.legal h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.legal p {
+    font-size: 1.2em;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+.legal a {
+    color: #fff;
+    text-decoration: underline;
+    transition: color 0.3s ease;
+}
+
+.legal a:hover {
+    color: #e1e1e1;
+}

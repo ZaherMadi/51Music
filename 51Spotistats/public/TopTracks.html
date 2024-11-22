@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>SpotiStats</title>
+    <script src="index.js" type="module"></script>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-title" content="Spotistats" />
+
+    <link rel="stylesheet" href="../MyStats.css">
+</head>
+<body>
+    <h1>Top Tracks</h1>
+    <button id="Artists">Top Tracks 💿</button>
+
+
+    <section id="profile" style="overflow-y: auto">
+        <h2>Titres les plus streams:  <span id="displayName"></span> </h2>
+        <span id="avatar"></span>
+        <ul>
+            <div id="tracks" class="tracks"></div>
+            </div>
+        </ul>
+    </section>
+    <button id="Reco">Accueil</button>
+    <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+        <button id="legal-mentions" style="background: none; border: none; color: #0073e6; cursor: pointer; text-decoration: underline; font-size: 0.9em;">
+            Mentions Légales
+        </button>
+    </div>
+    <script>
+        document.getElementById('legal-mentions').addEventListener('click', function() {
+            window.location.href = 'legal.html';
+        });
+    </script>
+    <script>
+        document.getElementById('Reco').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+        document.getElementById('Artists').addEventListener('click', function() {
+            window.location.href = 'TopArtists.html';
+        });
+    </script>
+</body>
+</html>

@@ -54,6 +54,34 @@
     animation: slideUp 0.8s ease-out;
   }
   
+  @media (min-width:491px) and (max-width:665px){
+      #profile {
+    
+    max-width: 40vh;
+    
+  }
+      h1 {
+              font-size: 35px;
+
+      }
+
+      img { width: 32vh; height: auto; }
+    
+  } 
+  @media (max-width:490px){
+      #profile {
+    
+    max-width: 30vh;
+    
+  }
+      h1 {
+              font-size: 30px;
+
+      }
+      img { width: 30vh; height: auto; }
+    
+  } 
+  
   #profile h2 {
     font-size: 1.8em;
     color: #1db954;
@@ -172,4 +200,8 @@
       background-color: #f9f9f9;
     }
   }
+
+#div-profile-img {
+display : none;
+}
   

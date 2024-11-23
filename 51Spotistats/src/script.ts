@@ -64,7 +64,7 @@ if (window.location.pathname === '/TopAlbums.html') {
 
 
                 if (!dataArtists) {
-                    fetchArtists(token).then((data) => {
+                    fetchArtists(token,20).then((data) => {
                         console.log(data);
                         localStorage.setItem('TopArtists', JSON.stringify(data));
                         const parsedData = JSON.parse(JSON.stringify(data));
@@ -73,7 +73,7 @@ if (window.location.pathname === '/TopAlbums.html') {
                     });
                 }
                 if (!dataTracks) {
-                    fetchTrack(token).then((data) => {
+                    fetchTrack(token,20).then((data) => {
                         console.log(data);
                         localStorage.setItem('TopTracks', JSON.stringify(data));
                         const parsedData = JSON.parse(JSON.stringify(data));
@@ -103,7 +103,7 @@ if (window.location.pathname === '/TopTracks.html') {
             console.log(parsedData.items);
         }
         else {
-        fetchTrack(token).then((data) => {
+        fetchTrack(token,20).then((data) => {
             console.log(data);
             localStorage.setItem('TopTracks', JSON.stringify(data));
             const parsedData = JSON.parse(JSON.stringify(data));
@@ -130,7 +130,7 @@ if (window.location.pathname === '/TopArtists.html') {
             console.log(parsedData.items);
         }
         else {
-        fetchArtists(token).then((data) => {
+        fetchArtists(token,20).then((data) => {
             console.log(data);
             localStorage.setItem('TopArtists', JSON.stringify(data));
             const parsedData = JSON.parse(JSON.stringify(data));
@@ -241,8 +241,9 @@ interface Track {
     };
 }
 
-async function fetchTrack(token: string): Promise<any> {
-    const result = await fetch("https://api.spotify.com/v1/me/top/tracks", {
+async function fetchTrack(token: string, limit: number): Promise<any> {
+    const URI= "https://api.spotify.com/v1/me/top/tracks?limit=" + limit.toString();
+    const result = await fetch(URI, {
         method: "GET", headers: { Authorization: `Bearer ${token}` }
     });
     if (!result.ok) {
@@ -252,6 +253,8 @@ async function fetchTrack(token: string): Promise<any> {
     console.log(result);
     return await result.json();
 }
+
+// Removed duplicate fetchTrack function
 
 function displayTopTracks(tracks: Track[]): void {
     const list = document.getElementById('tracks');
@@ -295,8 +298,9 @@ interface Artist {
 }
 
 
-async function fetchArtists(token: string): Promise<any> {
-    const result = await fetch("https://api.spotify.com/v1/me/top/artists", { // Utilisation correcte de top tracks
+async function fetchArtists(token: string, limit: number): Promise<any> {
+    const URI = "https://api.spotify.com/v1/me/top/artists?limit=" + limit.toString();
+    const result = await fetch(URI, { // Utilisation correcte de top tracks
         method: "GET",
         headers: { Authorization: `Bearer ${token}` }
     });

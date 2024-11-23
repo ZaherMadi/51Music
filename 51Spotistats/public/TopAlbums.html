@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Top Albums 💿 - Spotistats</title>
+    <script src="index.js" type="module"></script>
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="apple-mobile-web-app-title" content="Spotistats" />    <link rel="stylesheet" href="/MyStats.css">
+</head>
+<body>
+    <h1>Only on SpotiStats ! </h1>
+
+    <section id="profile" style="overflow-y: auto">
+        <h2>Top Albums 💿  <span id="displayName"></span> </h2>
+        <span id="album"></span>
+        <ul>
+            <div id="album" class="tracks"></div>
+            </div>
+        </ul>
+    </section>
+    <div style="display: flex; gap: 20px; margin-top:2vh;">
+    <button id="TopArtists">Top Artists</button>
+    <button id="Toptrack">Top Tracks</button>
+    </div>
+    <script>
+        document.getElementById('Toptrack').addEventListener('click', function() {
+            window.location.href = 'TopTracks.html';
+        });
+        document.getElementById('TopArtists').addEventListener('click', function() {
+            window.location.href = 'TopArtists.html';
+        });
+    </script>
+</body>
+</html>

@@ -3,6 +3,7 @@ const clientId = "1086596f94274f559255b1f60160c6c0";
 const params = new URLSearchParams(window.location.search);
 const code = params.get("code");
 console.log(params, code);
+
 if (window.location.pathname === '/callback' || window.location.pathname === '/callback.html') {
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
@@ -28,6 +29,64 @@ if (window.location.pathname === '/LoginPage.html') {
         populateUI(profile);
         
     }
+}
+
+if (window.location.pathname === '/TopAlbums.html') {
+    
+    const token = localStorage.getItem('token');
+    const dataArtists = localStorage.getItem('TopArtists');
+    const dataTracks = localStorage.getItem('TopTracks');
+    const dataAlbums = localStorage.getItem('TopAlbums');
+
+    if (!token) {
+        redirectToAuthCodeFlow(clientId);
+    }
+    else {
+            
+        if(!dataAlbums)
+        {
+
+            if (dataArtists && dataTracks) {
+                const parsedData = JSON.parse(dataArtists) + JSON.parse(dataTracks);
+                displayTopAlbums(parsedData.items);
+                console.log(parsedData.items);
+            }
+
+            else {
+                if (!dataArtists && !dataTracks) {
+                    fetchAlbums(token).then((data) => {
+                        console.log(data);
+                        localStorage.setItem('TopAlbums', JSON.stringify(data));
+                        const parsedData = JSON.parse(JSON.stringify(data));
+                        console.log(parsedData.items);
+                    });
+                }
+
+
+                if (!dataArtists) {
+                    fetchArtists(token).then((data) => {
+                        console.log(data);
+                        localStorage.setItem('TopArtists', JSON.stringify(data));
+                        const parsedData = JSON.parse(JSON.stringify(data));
+                        displayTopArtists(parsedData.items);
+                        console.log(parsedData.items);
+                    });
+                }
+                if (!dataTracks) {
+                    fetchTrack(token).then((data) => {
+                        console.log(data);
+                        localStorage.setItem('TopTracks', JSON.stringify(data));
+                        const parsedData = JSON.parse(JSON.stringify(data));
+                        displayTopTracks(parsedData.items);
+                        console.log(parsedData.items);
+                    });
+                }
+            
+            }
+        }
+
+    }
+
 }
 
 if (window.location.pathname === '/TopTracks.html') {
@@ -276,3 +335,63 @@ function displayTopArtists(Artists: Artist[]): void {
         list.appendChild(item);
     });
 }
+
+///// TOP ALBUMS //////
+
+
+interface Album {
+    name: string;
+    artists: { name: string }[];
+    images: { url: string }[];
+}
+
+
+async function fetchAlbums(token: string): Promise<any> {
+
+
+
+    fetchArtists(token, 50).then((data) => {
+        console.log(data);
+        localStorage.setItem('TopArtists', JSON.stringify(data));
+        const parsedData = JSON.parse(JSON.stringify(data));
+        console.log(parsedData.items);
+    });
+
+    fetchTrack(token, 50).then((data) => {
+        console.log(data);
+        localStorage.setItem('TopTracks', JSON.stringify(data));
+        const parsedData = JSON.parse(JSON.stringify(data));
+        console.log(parsedData.items);
+    });
+}
+
+
+function displayTopAlbums(Albums: Album[]): void {
+    const list = document.getElementById('albums');
+    if (!list) {
+        return;
+    }
+
+    list.innerHTML = ""; // Efface les albums précédents si la fonction est rappelée
+
+    Albums.forEach((Album, index) => {
+        console.log("Album ...", Album);
+        const item = document.createElement('div');
+        item.classList.add('albums');
+
+        // Utilisation correcte des images et autres éléments
+        item.innerHTML = `
+            <div class="rank">#${index + 1}</div>
+            <div class="albums-info">
+                <img src="${Album.images[0].url}" alt="${Album.name}" class="album-cover">
+                <div>
+                    <h5 class="album-name">${Album.name}</h5>
+                    <p class="artist-name">${Album.artists.map((artist) => artist.name).join(', ')}</p>
+                </div>
+            </div>
+        `;
+        list.appendChild(item);
+    }
+    );
+}
+

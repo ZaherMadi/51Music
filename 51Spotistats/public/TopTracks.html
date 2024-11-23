@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>SpotiStats</title>
+    <title>Top Tracks 💿 - Spotistats</title>
     <script src="index.js" type="module"></script>
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -15,8 +15,10 @@
 </head>
 <body>
     <h1>Top Tracks</h1>
-    <button id="Artists">Top Tracks 💿</button>
-
+    <div style="display: flex; gap: 30vw; margin-top:2vh;">
+    <button id="Artists">Top Artists 💿</button>
+    <button id="Albums">Top Albums 💿</button>
+</div>
 
     <section id="profile" style="overflow-y: auto">
         <h2>Titres les plus streams:  <span id="displayName"></span> </h2>
@@ -43,6 +45,9 @@
         });
         document.getElementById('Artists').addEventListener('click', function() {
             window.location.href = 'TopArtists.html';
+        });
+        document.getElementById('Albums').addEventListener('click', function() {
+            window.location.href = 'TopAlbums.html';
         });
     </script>
 </body>

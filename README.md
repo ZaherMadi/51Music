@@ -36,6 +36,7 @@ Spotify étant une plateforme que j'utilise quotidiennement, il m'a semblé natu
 - **Déploiement** :
   - [Vercel](https://vercel.com/) pour un hébergement rapide et fiable.
 
+... et un peu de chatGPT par ci par là (soyons honnête) 👀
 ---
 
 ## **Installation et configuration**

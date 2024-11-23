@@ -26,12 +26,20 @@
     <button id="TopArtists">Top Artists</button>
     <button id="Toptrack">Top Tracks</button>
     </div>
+    <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+        <button id="legal-mentions" style="background: none; border: none; color: #0073e6; cursor: pointer; text-decoration: underline; font-size: 0.9em;">
+            Mentions Légales
+        </button>
+    </div>
     <script>
         document.getElementById('Toptrack').addEventListener('click', function() {
             window.location.href = 'TopTracks.html';
         });
         document.getElementById('TopArtists').addEventListener('click', function() {
             window.location.href = 'TopArtists.html';
+        });
+        document.getElementById('legal-mentions').addEventListener('click', function() {
+            window.location.href = 'legal.html';
         });
     </script>
 </body>

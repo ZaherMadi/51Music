@@ -11,11 +11,14 @@
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="apple-mobile-web-app-title" content="Spotistats" />
 
-    <link rel="stylesheet" href="../MyStats.css">
+    <link rel="stylesheet" href="/MyStats.css">
 </head>
 <body>
+    <div id="div-profile-img" style="position: absolute; top: 10px; right: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); padding: 10px; border-radius: 50%; background-color: white;">
+        <img id="profile-img" alt="Profile Image" style="width: 50px; height: 50px; border-radius: 50%;">
+    </div>
     <h1>Top Tracks</h1>
-    <div style="display: flex; gap: 30vw; margin-top:2vh;">
+    <div style="display: flex; gap: 60vw; margin-top:2vh; max-width: 100%;">
     <button id="Artists">Top Artists 💿</button>
     <button id="Albums">Top Albums 💿</button>
 </div>

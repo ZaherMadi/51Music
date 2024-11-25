@@ -203,3 +203,9 @@
 .legal a:hover {
     color: #e1e1e1;
 }
+
+#div-profile-img {
+  display: flex;
+  justify-content: flex-end;  
+  }
+    

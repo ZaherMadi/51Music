@@ -177,6 +177,7 @@
     justify-content: center;
     align-items: left;
     padding-left: 5px;
+    overflow : scroll;
     
 }
 .legal h1, .legal p, .legal a {

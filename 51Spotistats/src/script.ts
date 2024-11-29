@@ -293,7 +293,13 @@ function populateUITop(profile: any) {
     if (profile.images[0]) {
         const profileImage = new Image(50, 50);
         profileImage.src = profile.images[0].url;
-        document.getElementById("div-profile-img")!.appendChild(profileImage);
+        const imgElement = document.getElementById("profile-img");
+        if (imgElement) {
+            const srcAttribute = imgElement.setAttributeNode(document.createAttribute('src'));
+            if (srcAttribute) {
+                srcAttribute.value = profile.images[0].url;
+            }
+        }
         console.log(profile.images[0].url, "profile image url, if");
     }
     document.getElementById("profile-img")!.innerText = profile.images[0]?.url ?? '(no profile image)';

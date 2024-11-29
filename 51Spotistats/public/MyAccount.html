@@ -10,73 +10,34 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <meta name="apple-mobile-web-app-title" content="Spotistats" />    <link rel="stylesheet" href="/MyStats.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
-            background-color: #f0f0f0;
-        }
-        .profile-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-        .profile-container h1 {
-            margin-bottom: 20px;
-        }
-        .profile-container p {
-            margin: 10px 0;
-        }
-        .profile-container button {
-            margin-top: 20px;
-            padding: 10px 20px;
-            border: none;
-            background-color: #007BFF;
-            color: #fff;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        .profile-container button:hover {
-            background-color: #0056b3;
-        }
-    </style>
 </head>
 <body>
-    <div class="profile-container">
-        <h1>My Profile</h1>
-        <p id="username">Username: </p>
-        <p id="email">Email: </p>
-        <button onclick="logout()">Logout</button>
+    <div class="category">
+        <h2>Mon Compte</h2>
+        <p id="country"></p>
+        <p id="display_name"></p>
+        <p id="email"></p>
+        <p id="explicit_content"></p>
+        <a id="external_urls" href="#" target="_blank">Spotify Profile</a>
+        <p id="followers"></p>
+        <a id="href" href="#" target="_blank">Profile Link</a>
+        <p id="id"></p>
     </div>
+    <div class="category">
+        <h2>Mon Abonnement</h2>
+        <p id="product"></p>
+    </div>
+    <div class="category">
+        <h2>Profile Image</h2>
+        <div id="profile_image"></div>
+    </div>
+    <button id="logout">Se Déconnecter</button>
 
     <script>
-        function populateUI() {
-            const username = localStorage.getItem('username');
-            const email = localStorage.getItem('email');
-
-            if (username && email) {
-                document.getElementById('username').textContent = `Username: ${username}`;
-                document.getElementById('email').textContent = `Email: ${email}`;
-            } else {
-                alert('No user information found.');
-            }
-        }
-
-        function logout() {
+        document.getElementById('logout').addEventListener('click', function() {
             localStorage.clear();
             window.location.href = 'index.html';
-        }
-
-        // Populate the UI with user information on page load
-        window.onload = populateUI;
+        });
     </script>
 </body>
 </html>

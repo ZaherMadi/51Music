@@ -11,11 +11,10 @@ if (window.location.pathname === '/callback' || window.location.pathname === '/c
         console.log("Code reçu eeee:", code);
         const accessToken = await getAccessToken(clientId, code);
         const profile = await fetchProfile(accessToken);
-        console.log(profile);
         populateUI(profile);          
-        console.log("Profil à sauvegarder :", profile);
+        console.log("Profil à sauvegarder :", profile.images[0].url);
 try {
-    localStorage.setItem('profile', JSON.stringify(profile));
+    localStorage.setItem('profile', JSON.stringify(profile.images[0].url));
     console.log("Profile sauvegardé dans le localStorage.");
 } catch (error) {
     console.error("Erreur lors de la sauvegarde dans le localStorage :", error);
@@ -24,6 +23,7 @@ try {
         } else {
         console.error("Pas de code dans l'URL.");
     }
+
 }
 
 if (window.location.pathname === '/LoginPage.html') {
@@ -282,7 +282,7 @@ function populateUI(profile: any) {
     }
     // document.getElementById("id")!.innerText = profile.id;
     // document.getElementById("email")!.innerText = profile.email;
-    document.getElementById("uri")!.innerText = profile.uri;
+    // document.getElementById("uri")!.innerText = profile.uri;
     document.getElementById("uri")!.setAttribute("href", profile.external_urls.spotify);
     document.getElementById("url")!.innerText = profile.href;
     document.getElementById("url")!.setAttribute("href", profile.href);

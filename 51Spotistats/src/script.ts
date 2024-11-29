@@ -291,7 +291,7 @@ function populateUI(profile: any) {
 function populateUITop(profile: any) {
     profile = JSON.parse(profile);
     if (profile.images[0]) {
-        const profileImage = new Image(200, 200);
+        const profileImage = new Image(50, 50);
         profileImage.src = profile.images[0].url;
         document.getElementById("div-profile-img")!.appendChild(profileImage);
         console.log(profile.images[0].url, "profile image url, if");

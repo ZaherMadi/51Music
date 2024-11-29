@@ -26,6 +26,7 @@ if (window.location.pathname === '/LoginPage.html') {
     } else {
         const accessToken = await getAccessToken(clientId, code);
         const profile = await fetchProfile(accessToken);
+        localStorage.setItem('profile', JSON.stringify(profile));
         console.log(profile);
         populateUI(profile);
         
@@ -139,8 +140,9 @@ if (window.location.pathname === '/TopArtists.html') {
             const parsedData = JSON.parse(datarecue);
             const profile = localStorage.getItem('profile');
             displayTopArtists(parsedData.items);
-            console.log(parsedData.items);
+            console.log(parsedData.items,"parsedData.items");
             populateUITop(profile);
+            console.log(profile, "if  datarecue");
         }
         else {
         fetchArtists(token,20).then((data) => {
@@ -149,9 +151,10 @@ if (window.location.pathname === '/TopArtists.html') {
             const parsedData = JSON.parse(JSON.stringify(data));
             displayTopArtists(parsedData.items);
             console.log(parsedData.items);
+            const profile = localStorage.getItem('profile');
+            populateUITop(profile);
         });
-        const profile = localStorage.getItem('profile');
-        populateUITop(profile);
+
             }
 
     }
@@ -292,7 +295,6 @@ function displayTopTracks(tracks: Track[]): void {
     list.innerHTML = ""; // Efface les pistes précédentes si la fonction est rappelée
 
     tracks.forEach((track, index) => {
-        console.log("test ...", track);
         const item = document.createElement('div');
         item.classList.add('track');
 

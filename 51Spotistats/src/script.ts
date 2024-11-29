@@ -32,6 +32,14 @@ if (window.location.pathname === '/LoginPage.html') {
         
     }
 }
+if (window.location.pathname === '/MyAccount.html') {
+    try {
+        MyAccount(localStorage.getItem('profile'));
+    } catch (error) {   
+        console.error("Erreur lors de la récupération du profil:", error);
+    }
+    
+}
 
 if (window.location.pathname === '/TopAlbums.html') {
 
@@ -467,5 +475,31 @@ function displayTopAlbums(Albums: Album[]): void {
         list.appendChild(item);
     }
     );
+}
+
+function MyAccount(profile: string | null) {
+    if (!profile) {
+        console.error("No profile data found.");
+        return;
+    }
+
+    const profileData = JSON.parse(profile);
+
+    document.getElementById("country")!.innerText = profileData.country;
+    document.getElementById("display_name")!.innerText = profileData.display_name;
+    document.getElementById("email")!.innerText = profileData.email;
+    document.getElementById("explicit_content")!.innerText = `Filter Enabled: ${profileData.explicit_content.filter_enabled}, Filter Locked: ${profileData.explicit_content.filter_locked}`;
+    document.getElementById("external_urls")!.setAttribute("href", profileData.external_urls.spotify);
+    document.getElementById("followers")!.innerText = `Followers: ${profileData.followers.total}`;
+    document.getElementById("href")!.setAttribute("href", profileData.href);
+    document.getElementById("id")!.innerText = profileData.id;
+    document.getElementById("product")!.innerText = profileData.product;
+    document.getElementById("uri")!.setAttribute("href", profileData.uri);
+
+    if (profileData.images.length > 0) {
+        const profileImage = new Image(200, 200);
+        profileImage.src = profileData.images[0].url;
+        document.getElementById("profile_image")!.appendChild(profileImage);
+    }
 }
 

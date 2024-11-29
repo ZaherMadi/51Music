@@ -9,41 +9,65 @@
     <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
-    <meta name="apple-mobile-web-app-title" content="Spotistats" />    <link rel="stylesheet" href="/MyStats.css">
+    <meta name="apple-mobile-web-app-title" content="Spotistats" />    
+    <link rel="stylesheet" href="/MyStats.css">
 </head>
 <body>
-    <div class="category">
-        <button id="logout">Se Déconnecter 📴</button>
-    </div>
-    <div style="display: flex;">
-    <div class="category">
-        <h2>Mon Compte</h2>
-        <div id="profile_image"></div>
-        <p id="country"></p>
-        <p id="display_name"></p>
-        <p id="email"></p>
-        <p id="explicit_content"></p>
-        <a id="external_urls" href="#" target="_blank">Spotify Profile</a>
-        <p id="followers"></p>
-        <a id="href" href="#" target="_blank">Profile Link</a>
-        <p id="id"></p>
-    </div>
-    <div class="category">
-        <h2>Mon Abonnement</h2>
-        <p id="product"></p>
-    </div>
-    </div>
+    <!-- Section de navigation -->
+    <header>
+        <div class="nav-buttons">
+            <button id="home" class="btn-nav">🏠 Retour à l'accueil</button>
+        </div>
+    </header>
     
-    <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
-        <button id="legal-mentions" style="background: none; border: none; color: #0073e6; cursor: pointer; text-decoration: underline; font-size: 0.9em;">
-            Mentions Légales
-        </button>
-    </div>
+    <!-- Section principale des informations -->
+    <main>
+        <h1>🎶 Bienvenue sur votre compte Spotify ! 🎶</h1>
+        <p class="subtitle">Voici les informations que nous avons récupérées à propos de votre compte :</p>
+        
+        <div class="info-container" style="display: flex; gap: 3vw; flex-wrap: wrap;">
+            <!-- Bloc "Mon Compte" -->
+            <div class="category">
+                <h2>👤 Mon Compte</h2>
+                <div id="profile_image" class="profile-img"></div>
+                <p><strong>Pays :</strong> <span id="country">Non renseigné</span></p>
+                <p><strong>Nom d'utilisateur :</strong> <span id="display_name">Non renseigné</span></p>
+                <p><strong>Email :</strong> <span id="email">Non renseigné</span></p>
+                <p><strong>Contenu explicite :</strong> <span id="explicit_content">Non renseigné</span></p>
+                <p><strong>Followers :</strong> <span id="followers">Non renseigné</span></p>
+                <p><strong>Identifiant Spotify :</strong> <span id="id">Non renseigné</span></p>
+                <a id="external_urls" href="#" target="_blank" class="btn-link">🎧 Accéder à mon profil Spotify</a>
+            </div>
+
+            <!-- Bloc "Mon Abonnement" -->
+            <div class="category">
+                <h2>📜 Mon Abonnement</h2>
+                <p><strong>Type d'abonnement :</strong> <span id="product">Non renseigné</span></p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Section de bas de page -->
+    <footer>
+        <div class="footer-buttons" style="display: flex; justify-content: space-between; margin-top: 20px;">
+            <button id="logout" class="btn-danger">🚪 Se Déconnecter</button>
+            <button id="legal-mentions" class="btn-link">📄 Mentions Légales</button>
+        </div>
+    </footer>
+    
     <script>
+        // Bouton "Se déconnecter"
         document.getElementById('logout').addEventListener('click', function() {
             localStorage.clear();
             window.location.href = 'index.html';
         });
+
+        // Bouton "Retour à l'accueil"
+        document.getElementById('home').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        // Bouton "Mentions légales"
         document.getElementById('legal-mentions').addEventListener('click', function() {
             window.location.href = 'legal.html';
         });

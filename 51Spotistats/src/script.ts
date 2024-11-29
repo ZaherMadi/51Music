@@ -298,7 +298,6 @@ function populateUITop(profile: any) {
 
         console.log(profile.images[0].url, "profile image url, if");
     }
-    document.getElementById("profile-img")!.innerText = profile.images[0]?.url ?? '(no profile image)';
 }
 
 //// div-profile-img

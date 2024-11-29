@@ -12,13 +12,6 @@ if (window.location.pathname === '/callback' || window.location.pathname === '/c
         const accessToken = await getAccessToken(clientId, code);
         const profile = await fetchProfile(accessToken);
         populateUI(profile);          
-        console.log("Profil à sauvegarder :", profile.images[0].url);
-try {
-    localStorage.setItem('profile', JSON.stringify(profile.images[0].url));
-    console.log("Profile sauvegardé dans le localStorage.");
-} catch (error) {
-    console.error("Erreur lors de la sauvegarde dans le localStorage :", error);
-}
 
         } else {
         console.error("Pas de code dans l'URL.");
@@ -296,6 +289,7 @@ function populateUI(profile: any) {
 
 
 function populateUITop(profile: any) {
+    profile = JSON.parse(profile);
     if (profile.images[0]) {
         const profileImage = new Image(200, 200);
         profileImage.src = profile.images[0].url;

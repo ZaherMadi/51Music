@@ -105,6 +105,7 @@ if (window.location.pathname === '/TopTracks.html') {
 
             const profile = localStorage.getItem('profile');
             populateUITop(profile);
+            console.log(profile, "if  datarecue");
         }
         else {
         fetchTrack(token,20).then((data) => {
@@ -113,10 +114,12 @@ if (window.location.pathname === '/TopTracks.html') {
             const parsedData = JSON.parse(JSON.stringify(data));
             displayTopTracks(parsedData.items);
             console.log(parsedData.items);
+            const profile = localStorage.getItem('profile');
+            populateUITop(profile);
+            console.log(profile, "else  datarecue");
         });
 
-        const profile = localStorage.getItem('profile');
-        populateUITop(profile);
+
         }
 
     }

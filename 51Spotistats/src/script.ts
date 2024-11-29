@@ -43,6 +43,7 @@ if (window.location.pathname === '/LoginPage.html') {
 if (window.location.pathname === '/TopAlbums.html') {
 
     const profile = localStorage.getItem('profile');
+    const profileURI = localStorage.getItem('profileURI');
     const token = localStorage.getItem('token');
     const dataArtists = localStorage.getItem('TopArtists');
     const dataTracks = localStorage.getItem('TopTracks');
@@ -60,6 +61,15 @@ if (window.location.pathname === '/TopAlbums.html') {
                 const parsedData = JSON.parse(dataArtists) + JSON.parse(dataTracks);
                 displayTopAlbums(parsedData.items);
                 console.log(parsedData.items);
+                
+                if(profile){ 
+                    populateUITop(profile);
+                    console.log(profile, "Test 1&&");
+                    console.log(profileURI, "URI &&");
+                    }
+                else{
+                    console.log("no profile");
+                }
             }
 
             else {
@@ -69,6 +79,14 @@ if (window.location.pathname === '/TopAlbums.html') {
                         localStorage.setItem('TopAlbums', JSON.stringify(data));
                         const parsedData = JSON.parse(JSON.stringify(data));
                         console.log(parsedData.items);
+                        
+                if(profile){ 
+                    populateUITop(profile);
+                    console.log(profile, "if  datarecue");
+                    }
+                else{
+                    console.log("no profile");
+                }
                     });
                 }
 
@@ -80,6 +98,14 @@ if (window.location.pathname === '/TopAlbums.html') {
                         const parsedData = JSON.parse(JSON.stringify(data));
                         displayTopArtists(parsedData.items);
                         console.log(parsedData.items);
+                        
+                if(profile){ 
+                    populateUITop(profile);
+                    console.log(profile, "if  datarecue");
+                    }
+                else{
+                    console.log("no profile");
+                }
                     });
                 }
                 if (!dataTracks) {
@@ -89,9 +115,7 @@ if (window.location.pathname === '/TopAlbums.html') {
                         const parsedData = JSON.parse(JSON.stringify(data));
                         displayTopTracks(parsedData.items);
                         console.log(parsedData.items);
-                    });
-                }
-
+                        
                 if(profile){ 
                     populateUITop(profile);
                     console.log(profile, "if  datarecue");
@@ -99,6 +123,9 @@ if (window.location.pathname === '/TopAlbums.html') {
                 else{
                     console.log("no profile");
                 }
+                    });
+                }
+
                 
             
             }
@@ -396,7 +423,7 @@ function displayTopArtists(Artists: Artist[]): void {
     list.innerHTML = ""; // Efface les pistes précédentes si la fonction est rappelée
 
     Artists.forEach((Artist, index) => {
-        console.log("test ...", Artist);
+        console.log(Artist);
         const item = document.createElement('div');
         item.classList.add('artists');
 

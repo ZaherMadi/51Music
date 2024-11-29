@@ -43,6 +43,7 @@ if (window.location.pathname === '/LoginPage.html') {
 if (window.location.pathname === '/TopAlbums.html') {
 
     const profile = localStorage.getItem('profile');
+    console.log(profile, "Test 1vrm");
     const profileURI = localStorage.getItem('profileURI');
     const token = localStorage.getItem('token');
     const dataArtists = localStorage.getItem('TopArtists');

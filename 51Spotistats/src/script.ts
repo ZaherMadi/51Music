@@ -12,7 +12,8 @@ if (window.location.pathname === '/callback' || window.location.pathname === '/c
         const accessToken = await getAccessToken(clientId, code);
         const profile = await fetchProfile(accessToken);
         console.log(profile);
-        populateUI(profile);            
+        populateUI(profile);          
+        localStorage.setItem('profile', JSON.stringify(profile));  
         } else {
         console.error("Pas de code dans l'URL.");
     }
@@ -126,8 +127,10 @@ if (window.location.pathname === '/TopArtists.html') {
     else {
         if (datarecue) {
             const parsedData = JSON.parse(datarecue);
+            const profile = localStorage.getItem('profile');
             displayTopArtists(parsedData.items);
             console.log(parsedData.items);
+            populateUITop(profile);
         }
         else {
         fetchArtists(token,20).then((data) => {
@@ -230,6 +233,18 @@ function populateUI(profile: any) {
     document.getElementById("imgUrl")!.innerText = profile.images[0]?.url ?? '(no profile image)';
 }
 
+
+function populateUITop(profile: any) {
+    if (profile.images[0]) {
+        const profileImage = new Image(200, 200);
+        profileImage.src = profile.images[0].url;
+        document.getElementById("div-profile-img")!.appendChild(profileImage);
+        console.log(profile.images[0].url, "profile image url, if");
+    }
+    document.getElementById("profile-img")!.innerText = profile.images[0]?.url ?? '(no profile image)';
+}
+
+//// div-profile-img
 ////////// TOPS TRACKS //////////
 
 interface Track {

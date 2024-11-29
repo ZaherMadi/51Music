@@ -8,7 +8,7 @@ if (window.location.pathname === '/callback' || window.location.pathname === '/c
     const params = new URLSearchParams(window.location.search);
     const code = params.get('code');
     if (code) {
-        console.log("Code reçu :", code);
+        console.log("Code reçu eeee:", code);
         const accessToken = await getAccessToken(clientId, code);
         const profile = await fetchProfile(accessToken);
         console.log(profile);

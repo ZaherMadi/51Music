@@ -13,8 +13,8 @@ if (window.location.pathname === '/callback' || window.location.pathname === '/c
         const profile = await fetchProfile(accessToken);
         console.log(profile);
         populateUI(profile);          
-        const profileLocalStorage = localStorage.setItem('profile', JSON.stringify(profile));
-        console.log("Profile sauvegardé dans le local storage.", profileLocalStorage);  
+        localStorage.setItem('profile', JSON.stringify(profile));
+        console.log("Profile sauvegardé dans le local storage.");  
         } else {
         console.error("Pas de code dans l'URL.");
     }

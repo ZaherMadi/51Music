@@ -43,7 +43,6 @@ if (window.location.pathname === '/LoginPage.html') {
 if (window.location.pathname === '/TopAlbums.html') {
 
     const profile = localStorage.getItem('profile');
-    console.log(profile, "Test 1vrm");
     const profileURI = localStorage.getItem('profileURI');
     const token = localStorage.getItem('token');
     const dataArtists = localStorage.getItem('TopArtists');
@@ -54,6 +53,8 @@ if (window.location.pathname === '/TopAlbums.html') {
         redirectToAuthCodeFlow(clientId);
     }
     else {
+        populateUITop(profile);
+        console.log(profileURI, "profileURI");
             
         if(!dataAlbums)
         {
@@ -62,15 +63,7 @@ if (window.location.pathname === '/TopAlbums.html') {
                 const parsedData = JSON.parse(dataArtists) + JSON.parse(dataTracks);
                 displayTopAlbums(parsedData.items);
                 console.log(parsedData.items);
-                
-                if(profile){ 
-                    populateUITop(profile);
-                    console.log(profile, "Test 1&&");
-                    console.log(profileURI, "URI &&");
-                    }
-                else{
-                    console.log("no profile");
-                }
+              
             }
 
             else {
@@ -81,13 +74,7 @@ if (window.location.pathname === '/TopAlbums.html') {
                         const parsedData = JSON.parse(JSON.stringify(data));
                         console.log(parsedData.items);
                         
-                if(profile){ 
-                    populateUITop(profile);
-                    console.log(profile, "if  datarecue");
-                    }
-                else{
-                    console.log("no profile");
-                }
+
                     });
                 }
 
@@ -99,14 +86,6 @@ if (window.location.pathname === '/TopAlbums.html') {
                         const parsedData = JSON.parse(JSON.stringify(data));
                         displayTopArtists(parsedData.items);
                         console.log(parsedData.items);
-                        
-                if(profile){ 
-                    populateUITop(profile);
-                    console.log(profile, "if  datarecue");
-                    }
-                else{
-                    console.log("no profile");
-                }
                     });
                 }
                 if (!dataTracks) {
@@ -116,14 +95,6 @@ if (window.location.pathname === '/TopAlbums.html') {
                         const parsedData = JSON.parse(JSON.stringify(data));
                         displayTopTracks(parsedData.items);
                         console.log(parsedData.items);
-                        
-                if(profile){ 
-                    populateUITop(profile);
-                    console.log(profile, "if  datarecue");
-                    }
-                else{
-                    console.log("no profile");
-                }
                     });
                 }
 

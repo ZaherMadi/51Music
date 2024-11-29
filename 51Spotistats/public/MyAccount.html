@@ -13,7 +13,12 @@
 </head>
 <body>
     <div class="category">
+        <button id="logout">Se Déconnecter 📴</button>
+    </div>
+    <div style="display: flex;">
+    <div class="category">
         <h2>Mon Compte</h2>
+        <div id="profile_image"></div>
         <p id="country"></p>
         <p id="display_name"></p>
         <p id="email"></p>
@@ -27,16 +32,20 @@
         <h2>Mon Abonnement</h2>
         <p id="product"></p>
     </div>
-    <div class="category">
-        <h2>Profile Image</h2>
-        <div id="profile_image"></div>
     </div>
-    <button id="logout">Se Déconnecter</button>
-
+    
+    <div style="display: flex; justify-content: flex-end; margin-top: 10px;">
+        <button id="legal-mentions" style="background: none; border: none; color: #0073e6; cursor: pointer; text-decoration: underline; font-size: 0.9em;">
+            Mentions Légales
+        </button>
+    </div>
     <script>
         document.getElementById('logout').addEventListener('click', function() {
             localStorage.clear();
             window.location.href = 'index.html';
+        });
+        document.getElementById('legal-mentions').addEventListener('click', function() {
+            window.location.href = 'legal.html';
         });
     </script>
 </body>

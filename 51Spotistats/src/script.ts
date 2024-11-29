@@ -33,8 +33,14 @@ if (window.location.pathname === '/LoginPage.html') {
     }
 }
 if (window.location.pathname === '/MyAccount.html') {
+    const profiletemp = localStorage.getItem('profile');
+
     try {
-        MyAccount(localStorage.getItem('profile'));
+        if (profiletemp) {
+            MyAccount(profiletemp);
+        } else {
+            console.error("Profile data is null.");
+        }
     } catch (error) {   
         console.error("Erreur lors de la récupération du profil:", error);
     }
@@ -477,11 +483,8 @@ function displayTopAlbums(Albums: Album[]): void {
     );
 }
 
-function MyAccount(profile: string | null) {
-    if (!profile) {
-        console.error("No profile data found.");
-        return;
-    }
+function MyAccount(profile: string) {
+
 
     const profileData = JSON.parse(profile);
 

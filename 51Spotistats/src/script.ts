@@ -102,6 +102,9 @@ if (window.location.pathname === '/TopTracks.html') {
             const parsedData = JSON.parse(datarecue);
             displayTopTracks(parsedData.items);
             console.log(parsedData.items);
+
+            const profile = localStorage.getItem('profile');
+            populateUITop(profile);
         }
         else {
         fetchTrack(token,20).then((data) => {
@@ -111,11 +114,15 @@ if (window.location.pathname === '/TopTracks.html') {
             displayTopTracks(parsedData.items);
             console.log(parsedData.items);
         });
+
+        const profile = localStorage.getItem('profile');
+        populateUITop(profile);
         }
 
     }
     
 }
+
 
 if (window.location.pathname === '/TopArtists.html') {
     
@@ -140,6 +147,8 @@ if (window.location.pathname === '/TopArtists.html') {
             displayTopArtists(parsedData.items);
             console.log(parsedData.items);
         });
+        const profile = localStorage.getItem('profile');
+        populateUITop(profile);
             }
 
     }

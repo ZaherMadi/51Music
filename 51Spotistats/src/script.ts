@@ -279,7 +279,11 @@ function populateUI(profile: any) {
         const profileImage = new Image(200, 200);
         profileImage.src = profile.images[0].url;
         document.getElementById("avatar")!.appendChild(profileImage);
+        console.log("Profil à sauvegarder populateUIif:", profile.images[0].url);
+
     }
+    console.log("Profil à sauvegarder populateUI:", profile.images[0].url);
+
     // document.getElementById("id")!.innerText = profile.id;
     // document.getElementById("email")!.innerText = profile.email;
     // document.getElementById("uri")!.innerText = profile.uri;

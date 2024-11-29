@@ -34,7 +34,8 @@ if (window.location.pathname === '/LoginPage.html') {
 }
 
 if (window.location.pathname === '/TopAlbums.html') {
-    
+
+    const profile = localStorage.getItem('profile');
     const token = localStorage.getItem('token');
     const dataArtists = localStorage.getItem('TopArtists');
     const dataTracks = localStorage.getItem('TopTracks');
@@ -83,6 +84,15 @@ if (window.location.pathname === '/TopAlbums.html') {
                         console.log(parsedData.items);
                     });
                 }
+
+                if(profile){ 
+                    populateUITop(profile);
+                    console.log(profile, "if  datarecue");
+                    }
+                else{
+                    console.log("no profile");
+                }
+                
             
             }
         }
@@ -93,6 +103,7 @@ if (window.location.pathname === '/TopAlbums.html') {
 
 if (window.location.pathname === '/TopTracks.html') {
     
+    const profile = localStorage.getItem('profile');    
     const token = localStorage.getItem('token');
     const datarecue = localStorage.getItem('TopTracks');
     if (!token) {
@@ -104,9 +115,14 @@ if (window.location.pathname === '/TopTracks.html') {
             displayTopTracks(parsedData.items);
             console.log(parsedData.items);
 
-            const profile = localStorage.getItem('profile');
+            if(profile){ 
             populateUITop(profile);
             console.log(profile, "if  datarecue");
+            }
+            else{
+                console.log("no profile");
+            }
+
         }
         else {
         fetchTrack(token,20).then((data) => {
@@ -115,9 +131,14 @@ if (window.location.pathname === '/TopTracks.html') {
             const parsedData = JSON.parse(JSON.stringify(data));
             displayTopTracks(parsedData.items);
             console.log(parsedData.items);
-            const profile = localStorage.getItem('profile');
-            populateUITop(profile);
-            console.log(profile, "else  datarecue");
+
+            if(profile){ 
+                populateUITop(profile);
+                console.log(profile, "if  datarecue");
+                }
+                else{
+                    console.log("no profile");
+                }
         });
 
 
@@ -130,6 +151,7 @@ if (window.location.pathname === '/TopTracks.html') {
 
 if (window.location.pathname === '/TopArtists.html') {
     
+    const profile = localStorage.getItem('profile');
     const token = localStorage.getItem('token');
     const datarecue = localStorage.getItem('TopArtists');
     if (!token) {
@@ -141,8 +163,14 @@ if (window.location.pathname === '/TopArtists.html') {
             const profile = localStorage.getItem('profile');
             displayTopArtists(parsedData.items);
             console.log(parsedData.items,"parsedData.items");
-            populateUITop(profile);
-            console.log(profile, "if  datarecue");
+            if(profile){ 
+                populateUITop(profile);
+                console.log(profile, "if  datarecue");
+            }
+            else{
+                    console.log("no profile");
+            }
+                
         }
         else {
         fetchArtists(token,20).then((data) => {
@@ -151,8 +179,14 @@ if (window.location.pathname === '/TopArtists.html') {
             const parsedData = JSON.parse(JSON.stringify(data));
             displayTopArtists(parsedData.items);
             console.log(parsedData.items);
-            const profile = localStorage.getItem('profile');
-            populateUITop(profile);
+            if(profile){ 
+                populateUITop(profile);
+                console.log(profile, "if  datarecue");
+                }
+            else{
+                console.log("no profile");
+            }
+            
         });
 
             }

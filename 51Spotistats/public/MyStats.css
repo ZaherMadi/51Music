@@ -225,6 +225,10 @@ button {
        
 }
 
+#div-profile-img:hover{
+    animation: pulse 1s infinite;
+}
+
 
 
 #div-profile-img img{

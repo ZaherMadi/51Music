@@ -34,17 +34,13 @@ if (window.location.pathname === '/LoginPage.html') {
 }
 if (window.location.pathname === '/MyAccount.html') {
     const profiletemp = localStorage.getItem('profile');
-    console.log("success", profiletemp);
     try {
         if (profiletemp) {
-            console.log("Profil à sauvegarder:", profiletemp);
             MyAccount(profiletemp);
         } else {
             console.error("Profile data is null.");
         }
-    } catch (error) {   
-        console.error("Erreur lors de la récupération du profil:", error);
-    }
+    } 
     
 }
 

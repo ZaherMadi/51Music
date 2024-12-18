@@ -40,6 +40,7 @@ if (window.location.pathname === '/MyAccount.html') {
     } 
     else {
             console.error("Profile data is null.");
+            window.location.href = "/LoginPage.html";
     }
     
     
